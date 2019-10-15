@@ -1,0 +1,41 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<style>
+div#offer-list_wrapper {
+    width: 100%;
+}
+</style>
+<div class="container">
+	<div class="row">
+		<h1>Checkout 51 Offer Lists</h1>
+	</div>
+	<div class="row">
+		<table id="offer-list" class="table table-stripped mt-3" style="width: 100%">
+			<thead>
+				<th>Name</th>
+				<th>Image</th>
+				<th>Cashback</th>
+			</thead>
+			<tbody>
+				{% if offers%}
+					{% for offer in offers %}
+						<tr>
+							<td>{{offer['name']}}</td>
+							<td><img src="{{offer['image_url']}}" width="100px" /></td>
+							<td>${{offer['cash_back']}}</td>
+						</td>
+					{% endfor %}
+				{% endif %}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script>
+	jQuery(document).ready(function(){
+		jQuery("#offer-list").DataTable();
+	})
+</script>
